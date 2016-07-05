@@ -2,6 +2,10 @@
 
 """
 Process to clone a launch configuration in AWS with various twiddles.
+
+NOTE: requires that your shell enviornment be setup to access AWS
+with variables of AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID and
+AWS_SECRET_ACCESS_KEY
 """
 
 from __future__ import print_function, division, absolute_import, unicode_literals
@@ -34,7 +38,12 @@ def parse_cli(passed_args=None):
     parser = argparse.ArgumentParser(description="Clone a Launch Configuration."
                                      " Note: Any options passed will override"
                                      " the cloned LCs settings, rather than"
-                                     " append to them.")
+                                     " append to them."
+                                     " Note2: Requires shell variables to be"
+                                     " set: AWS_DEFAULT_REGION,"
+                                     " AWS_ACCESS_KEY_ID, and"
+                                     " AWS_SECRET_ACCESS_KEY"
+                                     )
     parser.add_argument("old_lc_name", action='store',
                         help="The name of the LC to clone.")
     parser.add_argument("new_lc_name", action='store',
